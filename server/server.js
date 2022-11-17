@@ -5,6 +5,8 @@ const cors = require("cors");
 
 const answerTypesRouter = require("./routers/answerTypesRouter");
 const clayParametersRouter = require("./routers/clayParametersRouter");
+const questionsRouter = require("./routers/questionsRouter");
+const answerVariantsRouter = require("./routers/answerVariantsRouter");
 
 require("dotenv").config();
 const port = process.env.PORT;
@@ -18,6 +20,8 @@ app.use(bodyparser.urlencoded({ extended: true }));
 
 app.use("/answer-types", answerTypesRouter);
 app.use("/clay-parameters", clayParametersRouter);
+app.use("/questions", questionsRouter);
+app.use("/answer-variants", answerVariantsRouter);
 
 const startServer = async () => {
   try {
