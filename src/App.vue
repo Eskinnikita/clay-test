@@ -17,19 +17,19 @@ export default {
 </script>
 
 <style scoped>
-body,
-html {
-  margin: 0;
-  padding: 0;
-}
-* {
-  box-sizing: border-box;
-}
 .app-container {
   max-width: 1440px;
+  height: 100vh;
   margin: 0 auto;
   padding: 30px 20px;
-  box-sizing: border-box;
+}
+
+.quiz-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 a {
