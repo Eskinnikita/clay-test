@@ -11,6 +11,6 @@ router.post(
   controller.addQuestion
 );
 
-router.get("/:id", validateRequest, controller.getQuestionById);
+router.get("/:id", controller.getQuestionById);
 
 module.exports = router;

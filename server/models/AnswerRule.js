@@ -1,13 +1,16 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, default: mongoose } = require("mongoose");
 
 const AnswerRule = new Schema({
-  question_id: { type: monoose.ObjectId, ref: "Question", required: true },
+  question_id: { type: mongoose.ObjectId, ref: "Question", required: true },
   answer_variant_id: {
-    type: monoose.ObjectId,
+    type: mongoose.ObjectId,
     ref: "AnswerVariant",
     required: true,
   },
-  answer: { type: String, required: true },
+  next_question_id: {
+    type: mongoose.ObjectId,
+    ref: "Question",
+  },
 });
 
 module.exports = model("AnswerRule", AnswerRule);

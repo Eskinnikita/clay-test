@@ -1,7 +1,7 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, default: mongoose } = require("mongoose");
 
 const Answer = new Schema({
-  question_id: { type: monoose.ObjectId, ref: "Question", required: true },
+  question_id: { type: mongoose.ObjectId, ref: "Question", required: true },
   sessionId: { type: String, required: true, unique: true },
   answer: { type: String, required: true },
 });
