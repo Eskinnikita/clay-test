@@ -1,7 +1,7 @@
 <template>
   <div class="quiz-container">
     <div class="quiz">
-      <QuestionSnippet />
+      <QuestionSnippet :question="{}" />
     </div>
   </div>
 </template>
