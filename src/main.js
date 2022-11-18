@@ -5,12 +5,15 @@ import vuetify from "./plugins/vuetify";
 import { loadFonts } from "./plugins/webfontloader";
 import FingerprintJS from "@fingerprintjs/fingerprintjs";
 
-const userid = localStorage.getItem("user-id");
-if (!userid) {
+const sessioId = localStorage.getItem("sessionId");
+if (!sessioId) {
   const fpPromise = FingerprintJS.load();
   fpPromise
     .then((fp) => fp.get())
-    .then((result) => localStorage.setItem("user-id", result));
+    .then((result) => {
+      console.log(result);
+      localStorage.setItem("sessionId", result);
+    });
 }
 
 loadFonts();

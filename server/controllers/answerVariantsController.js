@@ -15,7 +15,10 @@ class answerVariantsController {
       const { question_id, answer } = req.body;
       const answerVariant = new AnswerVariant({ question_id, answer });
       const newAnswerVariant = await answerVariant.save();
-      return res.json({ message: "Вариант ответа успешно добавлен", newAnswerVariant });
+      return res.json({
+        message: "Вариант ответа успешно добавлен",
+        newAnswerVariant,
+      });
     } catch (e) {
       return res.status(500).json({ message: "Ошибка сервера" });
     }
