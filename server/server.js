@@ -8,6 +8,7 @@ const clayParametersRouter = require("./routers/clayParametersRouter");
 const questionsRouter = require("./routers/questionsRouter");
 const answerVariantsRouter = require("./routers/answerVariantsRouter");
 const answerRulesRouter = require("./routers/answerRulesRouter");
+const answerRouter = require("./routers/answersRouter");
 
 require("dotenv").config();
 const port = process.env.PORT;
@@ -24,6 +25,7 @@ app.use("/clay-parameters", clayParametersRouter);
 app.use("/questions", questionsRouter);
 app.use("/answer-variants", answerVariantsRouter);
 app.use("/answer-rules", answerRulesRouter);
+app.use("/answer", answerRouter);
 
 const startServer = async () => {
   try {
