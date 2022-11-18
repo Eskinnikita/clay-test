@@ -1,17 +1,22 @@
 import { defineStore } from "pinia";
-import apiService from "@/services/apiService";
+import apiClient from "@/services/apiClient";
 
-export const useProjectsStore = defineStore({
+export const useQuestionsStore = defineStore({
   id: "questions",
   state: () => ({
     question: null,
   }),
   actions: {
-    async getFirstQuestion() {
+    async getQuestion(questionId) {
       try {
+        const question = await apiClient.getById("/questions", questionId);
+        this.question = question.data[0];
       } catch (e) {
         console.log(e);
       }
+    },
+    async confirmAnswer(answerData) {
+      console.log(answerData);
     },
   },
 });
