@@ -69,7 +69,7 @@ class answerTypesController {
     }
   }
 
-  async restore(req, res) {
+  async restoreQuestions(req, res) {
     try {
       const sessionId = req.params.id;
       const lastAnswer = await Answer.findOne({ sessionId }).sort({

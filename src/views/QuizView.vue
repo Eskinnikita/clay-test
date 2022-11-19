@@ -18,11 +18,20 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 const questionsStore = useQuestionsStore();
 
-questionsStore.getQuestion("637684473ddb12eecade4791");
+const sessionId = localStorage.getItem("sessionId");
+const firstQuestionId = "637684473ddb12eecade4791";
+
+questionsStore.checkAnswers(sessionId).then((res) => {
+  if (res) {
+    questionsStore.restoreQuestions(sessionId);
+  } else {
+    questionsStore.getQuestion(firstQuestionId);
+  }
+});
 
 function sendAnswer(data) {
   const answerData = {
-    sessionId: localStorage.getItem("sessionId"),
+    sessionId,
     question_id: data.question_id,
     answer: data.answer.value.answer,
   };

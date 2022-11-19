@@ -18,22 +18,31 @@
           познания и ощущения твоей природы, он несоизмеримо мелок по сравнению
           с моим, понимаешь?
         </p>
-        <v-btn variant="outlined" @click="goToQuiz"
-          >Ну чо на народ, погнали, нафиг!</v-btn
-        >
+        <v-btn variant="outlined" @click="goToQuiz">{{
+          startButtonText
+        }}</v-btn>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useQuestionsStore } from "@/stores/questions";
 
 const router = useRouter();
+const questionsStore = useQuestionsStore();
 
 function goToQuiz() {
   router.push("/quiz");
 }
+
+let startButtonText = ref("Начать тест");
+const sessionId = localStorage.getItem("sessionId");
+questionsStore.checkAnswers(sessionId).then((res) => {
+  startButtonText.value = res ? "Продолжить тест" : "Начать тест";
+});
 </script>
 
 <style lang="scss" scoped>
