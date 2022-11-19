@@ -13,7 +13,9 @@
 <script setup>
 import QuestionSnippet from "@/components/QuestionSnippet.vue";
 import { useQuestionsStore } from "@/stores/questions";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 const questionsStore = useQuestionsStore();
 
 questionsStore.getQuestion("637684473ddb12eecade4791");
@@ -24,7 +26,13 @@ function sendAnswer(data) {
     question_id: data.question_id,
     answer: data.answer.value.answer,
   };
-  questionsStore.confirmAnswer(answerData).then(() => {});
+  questionsStore.confirmAnswer(answerData).then(() => {
+    if (data.answer.value.rule[0].next_question_id === null) {
+      router.push("/results");
+    } else {
+      questionsStore.getQuestion(data.answer.value.rule[0].next_question_id);
+    }
+  });
 }
 </script>
 

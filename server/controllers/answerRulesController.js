@@ -13,7 +13,6 @@ class answerRulesController {
           .json({ message: "Ошибка при регистрации", errors });
       }
       const { question_id, answer_variant_id, next_question_id } = req.body;
-      console.log(next_question_id);
       const answerRule = new AnswerRule({
         question_id,
         answer_variant_id,

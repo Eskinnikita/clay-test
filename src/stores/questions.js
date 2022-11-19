@@ -16,7 +16,18 @@ export const useQuestionsStore = defineStore({
       }
     },
     async confirmAnswer(answerData) {
-      console.log(answerData);
+      try {
+        await apiClient.post("/answers/add", answerData);
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    async resetTest(sessionId) {
+      try {
+        await apiClient.getById("/questions/reset", sessionId);
+      } catch (e) {
+        console.log(e);
+      }
     },
   },
 });

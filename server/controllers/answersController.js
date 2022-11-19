@@ -21,7 +21,7 @@ class answerController {
       const newAnswer = await answerData.save();
       return res.json({ message: "Ответ успешно добавлен", newAnswer });
     } catch (e) {
-      return res.status(500).json({ message: "Ошибка сервера" });
+      return res.status(500).json({ message: "Ошибка сервера", error: e });
     }
   }
 }

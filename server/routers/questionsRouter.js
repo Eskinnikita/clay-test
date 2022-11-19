@@ -12,5 +12,7 @@ router.post(
 );
 
 router.get("/:id", controller.getQuestionById);
+router.get("/reset/:id", controller.resetAnswers);
+router.get("/check/:id", controller.checkSessionAnswers);
 
 module.exports = router;

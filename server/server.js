@@ -25,7 +25,7 @@ app.use("/clay-parameters", clayParametersRouter);
 app.use("/questions", questionsRouter);
 app.use("/answer-variants", answerVariantsRouter);
 app.use("/answer-rules", answerRulesRouter);
-app.use("/answer", answerRouter);
+app.use("/answers", answerRouter);
 
 const startServer = async () => {
   try {
