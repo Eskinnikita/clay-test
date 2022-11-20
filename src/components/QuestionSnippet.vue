@@ -63,12 +63,9 @@ function confirmAnswer() {
 }
 
 const checkInputDisabled = computed(() => {
-  if (
-    question.value.type === "freeText" &&
-    userAnswer.value.answer.trim() === ""
-  )
-    return true;
-  return false;
+  return (
+    question.value.type === "freeText" && userAnswer.value.answer.trim() === ""
+  );
 });
 
 watch(
