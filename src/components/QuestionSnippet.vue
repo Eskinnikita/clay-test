@@ -33,6 +33,7 @@
       class="question__confirm-btn"
       variant="outlined"
       @click="confirmAnswer"
+      :disabled="checkInputDisabled"
     >
       Следующий вопрос
     </v-btn>
@@ -40,7 +41,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, toRefs, ref, watch } from "vue";
+import { defineProps, defineEmits, toRefs, ref, watch, computed } from "vue";
 
 const props = defineProps({
   question: Object,
@@ -60,6 +61,15 @@ function confirmAnswer() {
     question_id: question.value._id,
   });
 }
+
+const checkInputDisabled = computed(() => {
+  if (
+    question.value.type === "freeText" &&
+    userAnswer.value.answer.trim() === ""
+  )
+    return true;
+  return false;
+});
 
 watch(
   () => props.question,

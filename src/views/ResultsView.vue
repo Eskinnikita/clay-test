@@ -7,10 +7,10 @@
         Поздравляем, вы успешно прошли тесты. Все ваши ответы сохранены в базу
         данных для последующей обработки!
       </p>
-      <v-btn class="mb-5" variant="outlined" @click="resetTest"
+      <v-btn class="mb-5" variant="outlined" @click="resetWithRoute('/quiz')"
         >Пройти еще раз</v-btn
       >
-      <v-btn variant="text" @click="goToHomePage">На главную</v-btn>
+      <v-btn variant="text" @click="resetWithRoute('/')">На главную</v-btn>
     </div>
   </div>
 </template>
@@ -22,17 +22,10 @@ import { useQuestionsStore } from "@/stores/questions";
 const router = useRouter();
 const questionsStore = useQuestionsStore();
 
-const goToHomePage = () => {
+const resetWithRoute = (route) => {
   const sessionId = localStorage.getItem("sessionId");
   questionsStore.resetTest(sessionId).then(() => {
-    router.push("/");
-  });
-};
-
-const resetTest = () => {
-  const sessionId = localStorage.getItem("sessionId");
-  questionsStore.resetTest(sessionId).then(() => {
-    router.push("/quiz");
+    router.push(route);
   });
 };
 </script>
