@@ -23,7 +23,10 @@ const router = useRouter();
 const questionsStore = useQuestionsStore();
 
 const goToHomePage = () => {
-  router.push("/");
+  const sessionId = localStorage.getItem("sessionId");
+  questionsStore.resetTest(sessionId).then(() => {
+    router.push("/");
+  });
 };
 
 const resetTest = () => {
