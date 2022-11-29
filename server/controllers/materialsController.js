@@ -9,7 +9,7 @@ class materialsController {
       const material = new Material(req.body);
       const newMaterial = await material.save();
       return res.json({
-        message: "Параметр успешно добавлен",
+        message: "Материал успешно добавлен",
         newMaterial,
       });
     } catch (e) {
