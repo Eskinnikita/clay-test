@@ -23,6 +23,7 @@ const firstQuestionId = "637684473ddb12eecade4791";
 
 questionsStore.checkAnswers(sessionId).then((res) => {
   if (res) {
+    console.log(res);
     questionsStore.restoreQuestions(sessionId);
   } else {
     questionsStore.getQuestion(firstQuestionId);
