@@ -9,6 +9,7 @@ const questionsRouter = require("./routers/questionsRouter");
 const answerVariantsRouter = require("./routers/answerVariantsRouter");
 const answerRulesRouter = require("./routers/answerRulesRouter");
 const answerRouter = require("./routers/answersRouter");
+const materialsRouter = require("./routers/materialsRouter");
 
 require("dotenv").config();
 const port = process.env.PORT;
@@ -26,6 +27,7 @@ app.use("/questions", questionsRouter);
 app.use("/answer-variants", answerVariantsRouter);
 app.use("/answer-rules", answerRulesRouter);
 app.use("/answers", answerRouter);
+app.use("/materials", materialsRouter);
 
 const startServer = async () => {
   try {
