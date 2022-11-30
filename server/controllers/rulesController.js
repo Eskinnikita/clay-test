@@ -17,6 +17,19 @@ class rulesController {
       return res.status(500).json({ message: "Ошибка сервера" });
     }
   }
+
+  async addRuleComplex(req, res) {
+    try {
+      const ruleComplex = new RuleComplex(req.body);
+      const newRuleComplex = await ruleComplex.save();
+      return res.json({
+        message: "Комплексное правило успешно добавлено",
+        newRuleComplex,
+      });
+    } catch (e) {
+      return res.status(500).json({ message: "Ошибка сервера" });
+    }
+  }
 }
 
 module.exports = new rulesController();
