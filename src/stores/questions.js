@@ -5,6 +5,7 @@ export const useQuestionsStore = defineStore({
   id: "questions",
   state: () => ({
     question: null,
+    materials: null,
   }),
   actions: {
     async getQuestion(questionId) {
@@ -25,6 +26,7 @@ export const useQuestionsStore = defineStore({
     async resetTest(sessionId) {
       try {
         this.question = null;
+        this.materials = null;
         await apiClient.getById("/questions/reset", sessionId);
       } catch (e) {
         console.log(e);
@@ -48,6 +50,18 @@ export const useQuestionsStore = defineStore({
           sessionId
         );
         this.question = restoredQuestion.data[0];
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    async getMaterials(sessionId) {
+      try {
+        const materials = await apiClient.getById(
+          "/materials/get-result",
+          sessionId
+        );
+        console.log(materials);
+        this.materials = materials.data;
       } catch (e) {
         console.log(e);
       }

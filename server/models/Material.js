@@ -1,7 +1,8 @@
 const { Schema, model, default: mongoose } = require("mongoose");
 
 const Material = new Schema({
-  title: {type: String, unique: true},
+  title: { type: String, unique: true },
+  imageURL: { type: String },
   curability: { type: String, unique: false },
   hardness: { type: String, unique: false },
   colorVariety: { type: String, unique: false },
