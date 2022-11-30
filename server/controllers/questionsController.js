@@ -2,6 +2,7 @@ const Question = require("../models/Question");
 const Answer = require("../models/Answer");
 const AnswerVariant = require("../models/AnswerVariant");
 const AnswerType = require("../models/AnswerType");
+const RuleSimple = require("../models/RuleSimple");
 const ClayParameter = require("../models/ClayParameter");
 const { validationResult } = require("express-validator");
 var ObjectId = require("mongodb").ObjectID;
@@ -58,6 +59,14 @@ class answerTypesController {
               },
             ],
             as: "answers",
+          },
+        },
+        {
+          $lookup: {
+            from: "rulesimples",
+            localField: "_id",
+            foreignField: "question_id",
+            as: "simpleRules",
           },
         },
       ]);
@@ -177,7 +186,7 @@ class answerTypesController {
       const sessionId = req.params.id;
       const sessionAnswers = await Answer.find({ sessionId });
       const hasAnswers = !!sessionAnswers.length;
-      return res.json({hasAnswers});
+      return res.json({ hasAnswers });
     } catch (e) {
       return res.status(500).json({ message: "Ошибка сервера" });
     }
